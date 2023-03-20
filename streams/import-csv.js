@@ -1,6 +1,6 @@
 import { parse } from 'csv-parse';
 import fs from 'node:fs';
-import { Duplex } from 'node:stream';
+
 
 const csvPath = new URL('./tasks.csv', import.meta.url);
 
@@ -28,8 +28,7 @@ async function run() {
       body: JSON.stringify({
         title,
         description,
-      }),
-      duplex: 'half'
+      })
     })
 
   }

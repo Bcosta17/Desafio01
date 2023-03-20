@@ -25,25 +25,25 @@ export const routes = [
         path: buildRoutePath('/tasks'),
         handler: (req, res) => {
         
-            const {tittle, description} = req.body
-            
-            if(!tittle) {
+            const {title, description} = req.body
+            console.log(req.body)
+            if(!title) {
                 return res.writeHead(422).end('O título é Obrigatório')
             }
            
             if(!description) {
                 return res.writeHead(422).end('A descrição é Obrigatório')
             }
-
+            
             const task = {
               id: randomUUID(),
-              tittle,
+              title,
               description,
               completed_at: null,
               created_at: today,
               update_at: null,
              }
-            
+                console.log(task) 
              database.insert('tasks', task)
         
              return res.writeHead(201).end()
